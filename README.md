@@ -40,7 +40,7 @@ with Diagram("Clustered Web Services", show=False):
 
 And here is the output image:
 
-![Web Service](examples\clustered_web_services.png)
+![Web Service](examples/clustered_web_services.png)
 
 ## How to use this repo
 
