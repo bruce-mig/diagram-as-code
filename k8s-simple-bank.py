@@ -10,13 +10,14 @@ with Diagram("k8s micro bank", show=False):
 	svc = Service("svc")
 	dp = Deployment("dp")
 	consul = Consul("Consul")
+	rs = ReplicaSet("rs")
 
 	net = Ingress("api.microbank.com \n gapi.microbank.com") \
 			>> consul >> svc
 
 	net >> [Pod("bank-app1"),
 			Pod("bank-app2"),
-			Pod("bank-app3")] << dp << HPA("hpa")
+			Pod("bank-app3")] << rs << dp << HPA("hpa")
 	dp << ConfigMap("Config")
 	dp << Secret("Secret")
 	dp << ArgoCD("ArgoCD")

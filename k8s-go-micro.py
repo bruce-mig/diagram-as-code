@@ -11,6 +11,7 @@ with Diagram("k8s go micro", show=False, direction="TB"):
 	dp = Deployment("dp")
 	# istio = Istio("Istio")
 	consul = Consul("Consul")
+	rs = ReplicaSet("rs")
 	
 	net = Ingress("microbank.com") \
 			>> consul >> svc
@@ -21,7 +22,7 @@ with Diagram("k8s go micro", show=False, direction="TB"):
 			Pod("broker"),
 			Pod("listener"),
 			Pod("logger"),
-			Pod("mail")] << dp << HPA("hpa")
+			Pod("mail")] << rs << dp << HPA("hpa")
 	dp << ConfigMap("Config")
 	dp << Secret("Secret")
 	# dp << Flux("Flux")
